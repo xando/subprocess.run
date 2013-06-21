@@ -1,0 +1,46 @@
+body {
+    overflow-y: scroll;
+    font-family: 'Merriweather', serif;
+    font-size: 1em;
+    color: #444;
+    text-align:justify;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.property, .descclassname, .descname, .method em{
+    font-family: 'Ubuntu Mono', sans-serif;
+    font-style: normal;
+    font-size: 1.2em;
+}
+
+.class dt {
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 3.5em;
+    margin: 40px 0 55px 0;
+}
+
+h2 {
+    margin: 40px 0 15px 0;
+}
+
+.section .attribute {
+	margin-top: 50px;
+}
+
+a.headerlink {
+    color: #eee;
+}
+
+dd {
+    margin-left: 0;
+}
+
+dt {
+    margin: 25px 0 5px 0;
+}
