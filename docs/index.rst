@@ -1,6 +1,6 @@
-============================
-from os import path2 as path
-============================
+==========================
+from subprocess import run
+==========================
 
 The **subprocess** extension to run processes.
 
