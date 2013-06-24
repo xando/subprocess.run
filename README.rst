@@ -79,3 +79,14 @@ Supported platforms
 * Python2.7
 * Python3.3
 * PyPy1.9
+
+
+Tests
+-----
+
+[![Build Status](https://travis-ci.org/xando/suprocess.run.png?branch=master)](https://travis-ci.org/xando/suprocess.run)
+
+
+.. code-block:: bash
+
+   >>> python setup.py test
