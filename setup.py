@@ -7,6 +7,8 @@ from setuptools.command.install_egg_info import install_egg_info
 
 from distutils.sysconfig import get_python_lib
 
+import run
+
 here = os.path.dirname(__file__)
 pth_file = "subprocess.run.pth"
 
@@ -38,7 +40,7 @@ class PyTest(Command):
 
 
 setup(name='subprocess.run',
-      version="0.0.1",
+      version=run.__version__,
       data_files = [
          (get_python_lib(), [pth_file]),
       ],

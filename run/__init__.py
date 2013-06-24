@@ -48,6 +48,7 @@ import sys
 import shlex
 import subprocess
 
+__version__ = "0.0.2"
 
 if sys.version.startswith('3'):
     base_string_class = str
