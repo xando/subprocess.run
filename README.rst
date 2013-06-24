@@ -84,9 +84,11 @@ Supported platforms
 Tests
 -----
 
-[![Build Status](https://travis-ci.org/xando/suprocess.run.png?branch=master)](https://travis-ci.org/xando/suprocess.run)
+.. image:: https://api.travis-ci.org/xando/suprocess.run.png?branch=master
+   :target: https://travis-ci.org/xando/suprocess.run
 
 
 .. code-block:: bash
 
    >>> python setup.py test
+
