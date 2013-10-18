@@ -1,7 +1,7 @@
 import sys
 
 
-from run import run, base_string_class
+from run import run
 
 
 # dafault _commands
@@ -24,9 +24,7 @@ def test_run():
     assert output.lines
     assert output
 
-    assert isinstance(output, base_string_class)
     assert isinstance(output.lines, list)
-
     assert isinstance(output.qlines, list)
     assert isinstance(output.qlines[0], list)
 
@@ -52,7 +50,9 @@ def test_pipe():
 
 
 def test_chain():
-    assert run('ps aux', 'wc -l', 'wc -c').status == 0
+    command = run('ps aux', 'wc -l', 'wc -c')
+    # print command.chain
+    assert command.status == 0
     assert len(run('ps aux', 'wc -l', 'wc -c').chain) == 3
     assert [0, 0, 0] == [e.status for e in run('ps aux', 'wc -l', 'wc -c').chain]
 

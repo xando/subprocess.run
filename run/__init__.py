@@ -50,15 +50,8 @@ import subprocess
 
 __version__ = "0.0.2"
 
-if sys.version.startswith('3'):
-    base_string_class = str
-    python3 = True
-else:
-    base_string_class = unicode
-    python3 = False
 
-
-class std_output(base_string_class):
+class std_output(str):
 
     @property
     def lines(self):
@@ -151,12 +144,8 @@ class run(runmeta('base_run', (std_output, ), {})):
 
             stdout, stderr = process.communicate(data)
 
-            if python3:
-                stdout = stdout.rstrip("\n")
-                stderr = stderr.rstrip("\n")
-            else:
-                stdout = stdout.decode('utf-8').rstrip("\n")
-                stderr = stderr.decode('utf-8').rstrip("\n")
+            stdout = stdout.rstrip("\n")
+            stderr = stderr.rstrip("\n")
 
             out = stdout if stdout else stderr
 
@@ -178,6 +167,7 @@ class run(runmeta('base_run', (std_output, ), {})):
 
     def __repr__(self):
         return " | ".join([e.command for e in self.chain])
+
 
 
 if __name__ == "__main__":
