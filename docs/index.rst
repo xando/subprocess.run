@@ -2,36 +2,37 @@
 from subprocess import run
 ==========================
 
-The **subprocess** extension to run processes.
+Python’s standard **subprocess** module provides most of the capabilities you need to run external processes from Python, but the API is thoroughly misleading. 
+It requires you to check documentation every time when you are trying to do really simple thing like calling external process.
 
+The **subprocess.run** extension was create to run processes in a polite way. Bellow is short walk through, what is possible with **subprocess.run**.
+
+Walkthrough 
+-----------
 
 .. code-block:: python
 
-
    >>> from subprocess import run
 
-   >>> print run('uname -r')
-   3.7.0-7-generic
-
-   >>> print run('uname -r').stdout
-   3.7.0-7-generic
+   >>> run('uname -r').stdout
+   'Linux lena-laptop 3.11.0-12-generic #19-Ubuntu SMP Wed Oct 9 16:20:46 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux'
 
    >>> run('uname -a').status
    0
 
-   >>> print run('rm not_existing_directory').stderr
+   >>> run('rm not_existing_directory').stderr
    rm: cannot remove `not_existing_directory': No such file or directory
 
-   >>> print run('ls -la', 'wc -l')
+   >>> run('ls -la', 'wc -l')
    14
 
-   >>> print run('ls -la', 'wc -l', 'wc -c')
+   >>> run('ls -la', 'wc -l', 'wc -c')
    3
 
    >>> run('ls -la', 'wc -l', 'wc -c')
    ls -la | wc -l | wc -c
 
-   >>> print run('ls -la').stdout.lines
+   >>> run('ls -la').stdout.lines
    ['total 20',
    'drwxrwxr-x 3 user user 4096 Dec 20 22:55 .',
    'drwxrwxr-x 5 user user 4096 Dec 20 22:57 ..',
@@ -42,8 +43,8 @@ The **subprocess** extension to run processes.
 Status
 ------
 
-Library seems to be pretty stable. Feel free to use it as you want. 
-But this may not be the final version of the API. 
+The Code base is less than 100 LOC, feel free to look at it and explain to me why I should/shouldn't do things this way. 
+Library seems to be pretty stable. Feel free to use it as you want. But this may not be the final version of the API. 
 
 
 Install
@@ -55,13 +56,7 @@ You can install it from PyPi, by simply using **pip**:
 
    $ pip install suprocess.run
 
-(only if you don't have pip installed), an alternative method use **easy_install**:
-
-.. code-block:: bash
-
-   $ easy_install suprocess.run
-
-to test it launch **python**
+to test your installation just launch **python** and
 
 .. code-block:: python
    
