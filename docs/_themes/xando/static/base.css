@@ -44,3 +44,7 @@ dd {
 dt {
     margin: 25px 0 5px 0;
 }
+
+.highlight-python {
+	margin-top: 30px;
+}
