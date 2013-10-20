@@ -48,7 +48,7 @@ import sys
 import shlex
 import subprocess
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 
 class std_output(str):
@@ -147,9 +147,7 @@ class run(runmeta('base_run', (std_output, ), {})):
             stdout = stdout.rstrip("\n")
             stderr = stderr.rstrip("\n")
 
-            out = stdout if stdout else stderr
-
-            obj = super(run, cls).__new__(run, out)
+            obj = super(run, cls).__new__(run, command)
 
             obj.stdout = std_output(stdout)
             obj.stderr = std_output(stderr)
