@@ -116,7 +116,7 @@ class run(runmeta('base_run', (std_output, ), {})):
     """
 
     @classmethod
-    def create_process(cls, command, cwd, env, shell=False):
+    def create_process(cls, command, cwd, env, shell):
         return subprocess.Popen(
             shlex.split(command),
             universal_newlines=True,
@@ -136,11 +136,12 @@ class run(runmeta('base_run', (std_output, ), {})):
 
         cwd = kwargs.get('cwd')
         data = kwargs.get('data')
+        shell = kwargs.get('shell', False)
 
         chain = []
 
         for command in args:
-            process = cls.create_process(command, cwd, env)
+            process = cls.create_process(command, cwd=cwd, env=env, shell=shell)
 
             stdout, stderr = process.communicate(data)
 
