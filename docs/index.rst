@@ -68,7 +68,7 @@ And even more pipe. But this time, the call will take data from python script. T
    'drwxrwxr-x 2 user user 4096 Dec 20 22:37 dir',
    '-rw-rw-r-- 1 user user    0 Dec 20 22:52 file']
 
-To help with output processing, both **stdout** and **stderr** outputs are equipped with **lines** and **qlines** attribute, it will help with slicing your output to a list of strings.
+To help with output processing, both **stdout** and **stderr** outputs are equipped with **lines** attribute, it will help with slicing your output to a list of strings.
 
    >>> run('ls -la').stdout.qlines
    [
@@ -79,12 +79,12 @@ To help with output processing, both **stdout** and **stderr** outputs are equip
       ['-rw-rw-r--', '1', 'user', 'user', '0', 'Dec', '20', '22:52', 'file']
    ]
 
-And with **qlines** if you want to take this idea even further.
+And with **qlines**, to split lines to words.
 
 Status
 ------
 
-The codebase is less than 100 LOC, feel free to look at it and explain to me why I should/shouldn't do things this way. Library seems to be pretty stable. Feel free to use it as you want.
+The codebase is less than 100 LOC, feel free to look at it and explain to me why I should/shouldn't do things this way. Library seems to be pretty stable, feel free to use it as you want.
 
 Install
 -------
@@ -183,7 +183,7 @@ API
 
       >>> run('rm not_existing_directory').status
       1
-
+      
 .. py:attribute:: run.chain
 
    The full chain of command executed 
@@ -191,7 +191,7 @@ API
    .. code-block:: python
 
       >>> run('uname -r', 'wc -c').chain
-      [uname -r | wc -c]
+      [uname -r, uname -r | wc -c]
 
    To get statuses from all component commands
 
@@ -212,6 +212,5 @@ To pipe data in
 .. code-block:: bash
 
       $ ps aux | python script.py
-
 
 -----
