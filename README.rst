@@ -9,10 +9,7 @@ The **subprocess** extension to run processes.
 
    >>> from subprocess import run
 
-   >>> print run('uname -r')
-   3.7.0-7-generic
-
-   >>> print run('uname -r').stdout
+   >>> run('uname -r').stdout
    3.7.0-7-generic
 
    >>> run('uname -a').status
@@ -23,19 +20,6 @@ The **subprocess** extension to run processes.
 
    >>> print run('ls -la', 'wc -l')
    14
-
-   >>> print run('ls -la', 'wc -l', 'wc -c')
-   3
-
-   >>> run('ls -la', 'wc -l', 'wc -c')
-   ls -la | wc -l | wc -c
-
-   >>> print run('ls -la').stdout.lines
-   ['total 20',
-   'drwxrwxr-x 3 user user 4096 Dec 20 22:55 .',
-   'drwxrwxr-x 5 user user 4096 Dec 20 22:57 ..',
-   'drwxrwxr-x 2 user user 4096 Dec 20 22:37 dir',
-   '-rw-rw-r-- 1 user user    0 Dec 20 22:52 file']
 
 
 To use pipe from the shell.
