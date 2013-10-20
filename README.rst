@@ -59,12 +59,6 @@ You can install it from PyPi, by simply **pip**:
 
    $ pip install subprocess.run
 
-only if you don't have pip installed, an alternative method is **easy_install**:
-
-.. code-block:: bash
-
-   $ easy_install subprocess.run
-
 to test it, launch **python**
 
 .. code-block:: python
@@ -91,4 +85,3 @@ Tests
 .. code-block:: bash
 
    >>> python setup.py test
-
