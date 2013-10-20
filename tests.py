@@ -51,7 +51,7 @@ def test_pipe():
 
 def test_chain():
     command = run('ps aux', 'wc -l', 'wc -c')
-    # print command.chain
+
     assert command.status == 0
     assert len(run('ps aux', 'wc -l', 'wc -c').chain) == 3
     assert [0, 0, 0] == [e.status for e in run('ps aux', 'wc -l', 'wc -c').chain]
