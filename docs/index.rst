@@ -3,7 +3,7 @@ from subprocess import run
 ==========================
 
 Python’s standard **subprocess** module provides most of the capabilities you need to run external processes from Python, but the API is thoroughly misleading. 
-It requires you to check documentation every time when you are trying to do really simple thing like calling external process.
+It requires you to check documentation every time when you are trying to do really basic things related to creating external processes.
 
 The **subprocess.run** extension was create to run processes in a polite way. 
 
@@ -49,7 +49,7 @@ If something went not so well, the error output is available thought the **stder
    >>> run('ls -la', 'wc -l')
    14
 
-If pipe is needed, just add more one after another. Example above is same thins as **ls -la | wc -l**.
+If pipe is needed, just add more one after another. Example above is the same as **ls -la | wc -l**.
 
 .. code-block:: python
 
