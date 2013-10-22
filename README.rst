@@ -46,7 +46,7 @@ You can install it from PyPi, by simply **pip**:
 to test it, launch **python**
 
 .. code-block:: python
-   
+
    >>> from subprocess import run
 
 
@@ -62,9 +62,8 @@ Supported platforms
 Tests
 -----
 
-.. image:: https://api.travis-ci.org/xando/suprocess.run.png?branch=master
-   :target: https://travis-ci.org/xando/suprocess.run
-
+.. image:: https://travis-ci.org/xando/subprocess.run.png?branch=master
+   :target: https://travis-ci.org/xando/subprocess.run
 
 .. code-block:: bash
 

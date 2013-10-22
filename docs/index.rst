@@ -117,4 +117,16 @@ Supported platforms
 * Python3.3
 * PyPy1.9
 
+
+Tests
+-----
+
+.. image:: https://travis-ci.org/xando/subprocess.run.png?branch=master
+   :target: https://travis-ci.org/xando/subprocess.run
+
+.. code-block:: bash
+
+   >>> python setup.py test
+
+
 -----
