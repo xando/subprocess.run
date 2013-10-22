@@ -48,7 +48,7 @@ import sys
 import shlex
 import subprocess
 
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 
 class std_output(str):
