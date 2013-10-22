@@ -46,21 +46,21 @@ If something went not so well, the error output is available thought the **stder
 
 .. code-block:: python
 
-   >>> run('ls -la', 'wc -l')
+   >>> run('ls -la', 'wc -l').stdout
    14
 
 If pipe is needed, just add more one after another. Example above is the same as **ls -la | wc -l**.
 
 .. code-block:: python
 
-   >>> run('ls -la', 'wc -l', 'wc -c')
+   >>> run('ls -la', 'wc -l', 'wc -c').stdout
    3
 
 And more pipe.
 
 .. code-block:: python
 
-   >>> run('wc -c', data="test")
+   >>> run('wc -c', data="test").stdout
 
 And even more pipe. But this time, the call will take data from python script. This would be roughly something like **echo test | wc -c**
 
