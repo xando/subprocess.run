@@ -32,7 +32,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'subprocess.run'
-copyright = u'2013, Sebastian Pawluś'
+copyright = u'2013, <a href="http://xando.org/about.html">Sebastian Pawluś</a>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
