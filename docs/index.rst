@@ -64,7 +64,6 @@ And more pipe.
 
 And even more pipe. But this time, the call will take data from python script. This would be roughly something like **echo test | wc -c**
 
-
 .. code-block:: python
 
    >>> run('ls -la').stdout.lines
@@ -86,6 +85,26 @@ To help with output processing, both **stdout** and **stderr** outputs are equip
    ]
 
 And with **qlines**, to split lines to words.
+
+.. code-block:: python
+
+   >>> run('ls -la', 'wc -l', 'wc -c').chain
+
+Will return list of executed calls. Then let's do something that actually make sens 
+
+.. code-block:: python
+
+   >>> [call.status for call in run('ls -la', 'wc -l', 'wc -c').chain]
+   [0, 0, 0]
+
+This will return list of statuses inside **chain**.
+
+   >>> [call.stdout for call in run('ls -la', 'wc -l', 'wc -c').chain]
+   ['total 20\ndrwxrwxr-x 3 user user 4096 Dec 20 22:55 .\ndrwxrwxr-x 5 user user 4096 Dec 20 22:57 ..',
+   '95',
+   '2']
+
+This will return list of stdouts for commands inside **chain**.
 
 .. code-block:: python
 
