@@ -56,7 +56,7 @@ Supported platforms
 * Python2.6
 * Python2.7
 * Python3.3
-* PyPy1.9
+* PyPy2.1
 
 
 Tests
