@@ -116,14 +116,14 @@ class run(runmeta('base_run', (std_output, ), {})):
     """
 
     @classmethod
-    def create_process(cls, command, cwd, env, shell):
+    def create_process(cls, command, stdin, cwd, env, shell):
         return subprocess.Popen(
             shlex.split(command),
             universal_newlines=True,
             shell=shell,
             cwd=cwd,
             env=env,
-            stdin=subprocess.PIPE,
+            stdin=stdin,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             bufsize=0,
@@ -135,24 +135,20 @@ class run(runmeta('base_run', (std_output, ), {})):
         env.update(kwargs.get('env', {}))
 
         cwd = kwargs.get('cwd')
-        data = kwargs.get('data')
         shell = kwargs.get('shell', False)
 
         chain = []
 
+        stdin = kwargs.get('stdin', subprocess.PIPE)
+
         for command in args:
-            process = cls.create_process(command, cwd=cwd, env=env, shell=shell)
+            process = cls.create_process(command, stdin, cwd=cwd, env=env, shell=shell)
 
-            stdout, stderr = process.communicate(data)
-
-            stdout = stdout.rstrip("\n")
-            stderr = stderr.rstrip("\n")
+            stdin = process.stdout
 
             obj = super(run, cls).__new__(run, command)
 
-            obj.stdout = std_output(stdout)
-            obj.stderr = std_output(stderr)
-            obj.status = process.returncode
+            obj.process = process
             obj.pid = process.pid
             obj.command = command
 
@@ -160,13 +156,23 @@ class run(runmeta('base_run', (std_output, ), {})):
 
             obj.chain = chain[:]
 
-            data = obj.stdout
-
         return obj
+
+    @property
+    def status(self):
+        self.process.communicate()
+        return self.process.returncode
+
+    @property
+    def stdout(self):
+        return std_output(self.process.communicate()[0])
+
+    @property
+    def stderr(self):
+        return std_output(self.process.communicate()[1])
 
     def __repr__(self):
         return " | ".join([e.command for e in self.chain])
-
 
 
 if __name__ == "__main__":
