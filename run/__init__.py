@@ -65,7 +65,7 @@ class std_output(str):
 class runmeta(type):
     @property
     def stdin(cls):
-        return sys.stdin.read()
+        return sys.stdin
 
 
 class run(runmeta('base_run', (std_output, ), {})):
