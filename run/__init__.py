@@ -48,7 +48,7 @@ import sys
 import shlex
 import subprocess
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 
 
 class std_output(str):
@@ -142,7 +142,8 @@ class run(runmeta('base_run', (std_output, ), {})):
         stdin = kwargs.get('stdin', subprocess.PIPE)
 
         for command in args:
-            process = cls.create_process(command, stdin, cwd=cwd, env=env, shell=shell)
+            process = cls.create_process(
+                command, stdin, cwd=cwd, env=env, shell=shell)
 
             stdin = process.stdout
 
